@@ -1,3 +1,40 @@
+<dependencies>
+    <dependency>
+        <groupId>com.ibm.mq</groupId>
+        <artifactId>com.ibm.mq.allclient</artifactId>
+        <version>9.2.2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jms</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>4.0.3</version>
+    </dependency>
+</dependencies>
+
+
+# IBM MQ settings
+ibm.mq.queueManager=QM1
+ibm.mq.channel=CHANNEL1
+ibm.mq.connName=localhost(1414)
+ibm.mq.user=yourUser
+ibm.mq.password=yourPassword
+
+# HikariCP settings
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.max-lifetime=1800000
+spring.datasource.hikari.connection-timeout=2000
+spring.datasource.hikari.pool-name=MQPool
+
+
+
+
+
 import com.ibm.mq.jms.MQConnectionFactory;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -41,3 +78,7 @@ public class MqConfig {
         return new CachingConnectionFactory(hikariDataSource);
     }
 }
+
+
+
+
